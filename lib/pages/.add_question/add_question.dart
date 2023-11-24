@@ -77,7 +77,7 @@ class _AddQuestionState extends State<AddQuestion> {
                 String CAns = CorrectAns.text;
                 String Wans = WrongAns.text;
 
-                print("Round name: $SelR, Question: $AddQ, Correct answer: $CAns, Wrong answer: $Wans");
+                print("Question: $AddQ, Correct answer: $CAns, Wrong answer: $Wans");
 
               },
               style: ElevatedButton.styleFrom(
