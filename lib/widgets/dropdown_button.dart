@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class dropDownButton extends StatefulWidget {
-  const dropDownButton({super.key});
+class CustomDropDownButton extends StatefulWidget {
+  const CustomDropDownButton({super.key, required this.onChange});
+  final Function(String?) onChange;
 
   @override
-  State<dropDownButton> createState() => _dropDownButtonState();
+  State<CustomDropDownButton> createState() => _CustomDropDownButtonState();
 }
 
-class _dropDownButtonState extends State<dropDownButton> {
+class _CustomDropDownButtonState extends State<CustomDropDownButton> {
   String? dropdownValue;
 
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
-      value: dropdownValue,
-      onChanged: (String? newValue) {
-        setState(() {
-          dropdownValue = newValue!;
-        });
-      },
+      onChanged: widget.onChange,
       items: <String>['Toss', 'Googly', 'Rapid fire']
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
@@ -27,7 +24,6 @@ class _dropDownButtonState extends State<dropDownButton> {
         );
       }).toList(),
       decoration: const InputDecoration(
-        
         labelText: "Select Round",
         border: OutlineInputBorder(),
       ),
