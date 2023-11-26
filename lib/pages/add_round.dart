@@ -1,4 +1,6 @@
+import 'package:dadagiri_admin_panel/pages/add_question/add_question.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 class AddRound extends StatefulWidget {
   const AddRound({super.key});
 
@@ -29,7 +31,7 @@ class _AddRoundState extends State<AddRound> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              "Add Round",
+              "রাউন্ড নথিভুক্তিকরণ",
             style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Color(0xff424242)),
             ),
             Container(
@@ -39,7 +41,7 @@ class _AddRoundState extends State<AddRound> {
               controller: RoundName,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Round Name',
+                labelText: 'রাউন্ডের নাম লিখুন',
               ),
             ),
             Container(
@@ -49,7 +51,7 @@ class _AddRoundState extends State<AddRound> {
               controller: RoundNumber,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Round Number',
+                labelText: 'রাউন্ড সংখ্যা লিখুন',
               ),
             ),
             Container(
@@ -59,7 +61,7 @@ class _AddRoundState extends State<AddRound> {
               controller: PlusMark,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Positive Marking',
+                labelText: 'যুক্ত নম্বরের পরিমাণ',
               ),
             ),
             Container(
@@ -69,7 +71,7 @@ class _AddRoundState extends State<AddRound> {
               controller: MinusMark,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Negative Marking',
+                labelText: 'বিযুক্ত নম্বরের পরিমাণ',
               ),
             ),
             Container(
@@ -84,12 +86,14 @@ class _AddRoundState extends State<AddRound> {
 
                 print("Round name: $Rname, Round number: $Rnumber, Positive marking: $Pmark, Negative marking: $Nmark");
 
+                Get.to(() => const AddQuestion());
+
               },
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(500, 58),
                 textStyle: const TextStyle(fontSize: 20),
               ),
-              child: const Text('Submit'),
+              child: const Text('জমা দিন'),
             )
           ],
         ),

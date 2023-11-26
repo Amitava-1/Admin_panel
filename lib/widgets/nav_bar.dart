@@ -1,0 +1,20 @@
+import 'package:flutter/material.dart';
+
+class NavBar extends StatefulWidget {
+  const NavBar({super.key});
+
+  @override
+  State<NavBar> createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      drawer: Drawer(),
+      appBar: AppBar(
+        title: const Text('ড্যাশবোর্ড'),
+      ),
+    );
+  }
+}
