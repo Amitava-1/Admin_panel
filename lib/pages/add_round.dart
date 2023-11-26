@@ -4,6 +4,7 @@ import 'package:get/route_manager.dart';
 import 'package:dadagiri_admin_panel/data/controllers/game_round_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 class AddRound extends StatefulWidget {
   const AddRound({super.key});
 
@@ -21,6 +22,12 @@ class _AddRoundState extends State<AddRound> {
       TextEditingController();
   final TextEditingController _roundNegativeScoreController =
       TextEditingController();
+
+  @override
+  void didChangeDependencies() {
+    Navigator.of(context);
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +127,9 @@ class _AddRoundState extends State<AddRound> {
               ],
             );
           }),
-        ),),);
+        ),
+      ),
+    );
     //     child: Column(
     //       mainAxisAlignment: MainAxisAlignment.center,
     //       children: [
