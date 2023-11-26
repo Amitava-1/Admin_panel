@@ -23,7 +23,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
       onChanged: widget.onChange,
       items: widget.dropDownItem,
       decoration: const InputDecoration(
-        labelText: "Select Round",
+        labelText: "রাউন্ড সনাক্ত করুন",
         border: OutlineInputBorder(),
       ),
     );

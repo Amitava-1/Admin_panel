@@ -20,6 +20,12 @@ class _AddQuestionState extends State<AddQuestion> {
     getRoundList();
   }
 
+  @override
+  void didChangeDependencies() {
+    Navigator.of(context);
+    super.didChangeDependencies();
+  }
+
   Future getRoundList() async {
     await questionController.getRoundList();
   }
@@ -59,7 +65,7 @@ class _AddQuestionState extends State<AddQuestion> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        "Add Questions",
+                        "প্রশ্ন নথিভুক্তিকরণ",
                         style: TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
@@ -93,7 +99,7 @@ class _AddQuestionState extends State<AddQuestion> {
                         },
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'Add Question',
+                          labelText: 'প্রশ্ন লিখুন',
                         ),
                       ),
                       const SizedBox(
@@ -106,7 +112,7 @@ class _AddQuestionState extends State<AddQuestion> {
                         },
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'Correct Answer',
+                          labelText: 'সঠিক উত্তরটি লিখুন',
                         ),
                       ),
                       const SizedBox(
@@ -120,23 +126,19 @@ class _AddQuestionState extends State<AddQuestion> {
                         },
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'Wrong Answer',
+                          labelText: 'ভুল উত্তরটি লিখুন',
                         ),
                       ),
                       const SizedBox(
                         height: 40,
                       ),
                       _gameQuizControllerBuilder.showLoadingAnimation.value
-                          ? const CircularProgressIndicator()
+                          ? CircularProgressIndicator()
                           : ElevatedButton(
                               onPressed: () {
                                 questionController.addQuestion(context);
                               },
-                              style: ElevatedButton.styleFrom(
-                                minimumSize: const Size(500, 58),
-                                textStyle: const TextStyle(fontSize: 20),
-                              ),
-                              child: const Text('Submit'),
+                              child: const Text('জমা করুন'),
                             )
                     ],
                   );

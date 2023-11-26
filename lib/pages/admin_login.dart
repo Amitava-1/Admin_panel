@@ -1,5 +1,6 @@
 import 'package:dadagiri_admin_panel/constants/colors.dart';
 import 'package:dadagiri_admin_panel/pages/add_question/add_question.dart';
+import 'package:dadagiri_admin_panel/pages/dashboard.dart';
 import 'package:dadagiri_admin_panel/widgets/app_background_container.dart';
 import 'package:dadagiri_admin_panel/widgets/custom_text_widget.dart';
 import 'package:flutter/material.dart';
@@ -157,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onTap: () {
                         String uID = userID.text;
                         String uPass = passWord.text;
-                        Get.to(() => const AddQuestion());
+                        Get.to(() => const Dashboard());
                       },
                       child: Container(
                         height: 40,

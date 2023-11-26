@@ -1,5 +1,6 @@
 import 'package:dadagiri_admin_panel/firebase_options.dart';
 import 'package:dadagiri_admin_panel/pages/admin_login.dart';
+import 'package:dadagiri_admin_panel/pages/dashboard.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const LoginScreen(),
+      // home: const Dashboard(),
     );
   }
 }
