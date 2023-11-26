@@ -14,6 +14,17 @@ class _AddQuestionState extends State<AddQuestion> {
   final questionController = Get.put(GameQuizController());
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getRoundList();
+  }
+
+  Future getRoundList() async {
+    await questionController.getRoundList();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffe4eff5),
@@ -37,18 +48,28 @@ class _AddQuestionState extends State<AddQuestion> {
                       fontWeight: FontWeight.bold,
                       color: Color(0xff424242)),
                 ),
-                Container(
+                const SizedBox(
                   height: 35,
                 ),
+
+                //Dropdown field to capture the Rounds.
                 CustomDropDownButton(
+                  dropDownItem: _gameQuizControllerBuilder.roundList
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
                   onChange: (dropDownSelectedValue) {
                     questionController.currentSelectedRoundName.value =
                         dropDownSelectedValue!;
                   },
                 ),
-                Container(
+                const SizedBox(
                   height: 20,
                 ),
+                // TextField to capture the question.
                 TextField(
                   onChanged: (value) {
                     questionController.question.value = value;
@@ -58,21 +79,24 @@ class _AddQuestionState extends State<AddQuestion> {
                     labelText: 'Add Question',
                   ),
                 ),
-                Container(
+                const SizedBox(
                   height: 20,
                 ),
+                // Textfield to capture the correctAnswer
                 TextField(
                   onChanged: (value) {
-                    questionController.correctAnser.value = value;
+                    questionController.correctAnswer.value = value;
                   },
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Correct Answer',
                   ),
                 ),
-                Container(
+                const SizedBox(
                   height: 20,
                 ),
+
+                // Textfield to capture the wrong answer.
                 TextField(
                   onChanged: (value) {
                     questionController.wrongAnswer.value = value;
@@ -82,21 +106,21 @@ class _AddQuestionState extends State<AddQuestion> {
                     labelText: 'Wrong Answer',
                   ),
                 ),
-                Container(
+                const SizedBox(
                   height: 40,
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    _gameQuizControllerBuilder.addQuestion(context);
-                    print(
-                        "Question: ${_gameQuizControllerBuilder.question}, Correct answer: ${_gameQuizControllerBuilder.correctAnser}, Wrong answer: ${_gameQuizControllerBuilder.wrongAnswer}");
-                  },
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(500, 58),
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
-                  child: const Text('Submit'),
-                )
+                _gameQuizControllerBuilder.showLoadingAnimation.value
+                    ? CircularProgressIndicator()
+                    : ElevatedButton(
+                        onPressed: () {
+                          questionController.addQuestion(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(500, 58),
+                          textStyle: const TextStyle(fontSize: 20),
+                        ),
+                        child: const Text('Submit'),
+                      )
               ],
             );
           }),
