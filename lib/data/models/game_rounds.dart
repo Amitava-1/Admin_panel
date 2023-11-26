@@ -10,4 +10,11 @@ class GameRounds {
     required this.roundPositiveScore,
     required this.roundNegativeScore,
   });
+
+  Map<String, dynamic> toJson() => {
+        'RoundName': roundName,
+        'RoundPosition': roundPosition,
+        'RoundPositiveScore': roundPositiveScore,
+        'RoundNegativeScore': roundPositiveScore,
+      };
 }
