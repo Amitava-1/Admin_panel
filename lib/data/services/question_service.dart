@@ -9,7 +9,7 @@ class QuestionService {
       String questionSubCollectionName, GameQuestion gameQuestionModel) async {
     try {
       DocumentReference insertedQuestion = await _firebaseFirestore
-          .collection(questionSubCollectionName)
+          .collection("questions")
           .add(gameQuestionModel.toJson());
 
       return FailedToast().showErrorSnackbar(300, "Submitted");
