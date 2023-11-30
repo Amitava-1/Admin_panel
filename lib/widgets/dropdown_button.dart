@@ -1,5 +1,5 @@
+import 'package:dadagiri_admin_panel/constants/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class CustomDropDownButton extends StatefulWidget {
   const CustomDropDownButton({
@@ -22,9 +22,29 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
     return DropdownButtonFormField<String>(
       onChanged: widget.onChange,
       items: widget.dropDownItem,
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
+        fillColor: Colors.white.withOpacity(0.3),
+        filled: true,
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Color(AppColors.DEEP_AMBER),
+          ),
+          borderRadius: BorderRadius.all(
+            Radius.circular(12),
+          ),
+        ),
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Color(AppColors.DEEP_AMBER),
+          ),
+          borderRadius: BorderRadius.all(
+            Radius.circular(12),
+          ),
+        ),
         labelText: "রাউন্ড সনাক্ত করুন",
-        border: OutlineInputBorder(),
+        labelStyle: const TextStyle(
+          color: Color(AppColors.DEEP_AMBER),
+        ),
       ),
     );
   }

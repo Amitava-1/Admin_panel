@@ -20,19 +20,20 @@ class GameQuizController extends GetxController {
     showLoadingAnimation.value = true;
     update();
     if (_isInputValidationPassed()) {
-      String subCollectionName =
-          await _roundService.fetchRoundId(currentSelectedRoundName.value);
+      // String subCollectionName =
+      //     await _roundService.fetchRoundId(currentSelectedRoundName.value);
 
-      subCollectionName =
-          "${"rounds/$subCollectionName/${currentSelectedRoundName.value}"}Round";
+      // subCollectionName =
+      //     "${"rounds/$subCollectionName/${currentSelectedRoundName.value}"}Round";
 
       GameQuestion gameQuestionModel = GameQuestion(
-          question: question.value,
-          correctAnswer: correctAnswer.value,
-          wrongAnswer: wrongAnswer.value);
+        question: question.value,
+        correctAnswer: correctAnswer.value,
+        wrongAnswer: wrongAnswer.value,
+        roundName: currentSelectedRoundName.value,
+      );
 
-      await _questionService.addQuestionAPI(
-          subCollectionName, gameQuestionModel);
+      await _questionService.addQuestionAPI("questions", gameQuestionModel);
       showLoadingAnimation.value = false;
       update();
     } else {
